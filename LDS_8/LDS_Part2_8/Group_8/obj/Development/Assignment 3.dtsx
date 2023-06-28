@@ -1,0 +1,3308 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/14/2022 2:32:15 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HOP-HOP"
+  DTS:CreatorName="HOP-HOP\esaba"
+  DTS:DTSID="{E759CD31-3E2B-41A1-B8E9-2A31583003CF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.845.0"
+  DTS:LocaleID="1040"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{F9C2D810-434A-47EF-85E9-73BE97482391}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{45B3A76F-FB53-405B-BE2A-54290CB0B4AE}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\esaba\Desktop\Lds-project\02 - SSIS\Assignment 1 results.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="subjectid"
+              DTS:DTSID="{44A24D97-7B1C-45FA-9B77-7BFF015514F7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="sub_confidence"
+              DTS:DTSID="{FC54587F-64E9-4B0B-9FD7-78370A988858}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lds.di.unipi.it.Group_8_DB.Group_8]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{EBB4761B-0266-4293-A6A4-1B104D26B46E}"
+      DTS:ObjectName="lds.di.unipi.it.Group_8_DB.Group_8">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=lds.di.unipi.it;User ID=Group_8;Initial Catalog=Group_8_DB;Provider=SQLNCLI11.1;Persist Security Info=True;Application Name=SSIS-Package1-{EBB4761B-0266-4293-A6A4-1B104D26B46E}lds.di.unipi.it.Group_8_DB.Group_8;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7UB7Q6S4qUyDn9h/BhrQWgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABGaUkxB67MM8kKhUhSqK2QC7vbiDYwq5A1C55HOFuZiAAAAAAOgAAAAAIAACAAAADDC7DmJweiS3ceUJFrRu82GmIBdwxHqEs0pg4s7PSJGiAAAABrkZd93WnouSNl5vja6ENCWA426Ml1U0NoUarT961py0AAAAB87gH7mHZPaMkuBYD0vMmpXwqfH4MW+c/j2VYH0VfXfEo/GC8Hr8s4v9OLTQrryK2Ayjm5qaiQIxdsaskHQhZQ</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Assignment 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Attività Flusso di dati"
+      DTS:DTSID="{36F03A61-3258-4940-B0A3-648235C2A932}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Assignment 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Assignment 1\Aggregazione"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregazione;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;3"
+              description="Aggrega i dati con funzioni quali Media, Somma, Conta numeri, Max e Min. Ad esempio, raggruppare i dati per calcolare la somma delle vendite per prodotto o la media giornaliera delle visite."
+              name="Aggregazione"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero approssimativo di chiavi Group By generate dall'aggregazione. Basso indica 500.000 valori di chiave, Medio indica 5 milioni di valori di chiave e Alto indica più di 25 milioni di valori di chiave. Non specificato indica che non viene utilizzato alcun valore KeyScale."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifica il numero esatto di chiavi Group By generate dall'aggregazione. Se si specifica un valore KeyScale, il valore di Keys ha la precedenza."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero approssimativo di valori Distinct in una colonna a cui viene applicata la funzione di aggregazione Count Distinct. Basso indica 500.000 valori di chiave, Medio indica 5 milioni di valori di chiave e Alto indica 25 milioni di valori di chiave. Non specificato indica che non viene utilizzato alcun valore CountDistinctScale."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifica il numero approssimativo di valori Distinct in una colonna a cui viene applicata la funzione di aggregazione Count Distinct. Se si specifica un valore CountDistinctScale, il valore in CountDistinctKeys ha la precedenza."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifica la percentuale di estensione della memoria consentita durante l'aggregazione. I valori validi sono compresi tra 1 e 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Assignment 1\Aggregazione.Inputs[Input aggregazione 1]"
+                  name="Input aggregazione 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Assignment 1\Aggregazione.Inputs[Input aggregazione 1].Columns[subjectid]"
+                      cachedDataType="i4"
+                      cachedName="subjectid"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[subjectid]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Aggregazione.Inputs[Input aggregazione 1].Columns[answerid]"
+                      cachedDataType="i4"
+                      cachedName="answerid"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[answerid]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Assignment 1\Aggregazione.Outputs[Output aggregazione 1]"
+                  name="Output aggregazione 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifica il numero approssimativo di chiavi Group By generate dall'aggregazione. Basso indica 500.000 valori di chiave, Medio indica 5 milioni di valori di chiave e Alto indica più di 25 milioni di valori di chiave. Non specificato indica che non viene utilizzato alcun valore KeyScale."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifica il numero esatto di chiavi Group By generate dall'aggregazione. Se si specifica un valore KeyScale, il valore di Keys ha la precedenza."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Aggregazione.Outputs[Output aggregazione 1].Columns[subjectid]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Aggregazione.Outputs[Output aggregazione 1].Columns[subjectid]"
+                      name="subjectid">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'ID della colonna di input utilizzata nell'aggregazione."
+                          name="AggregationColumnId">#{Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[subjectid]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di aggregazione."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indica se la colonna richieste interventi di gestione speciali perché contiene dati di dimensioni eccessive o richiede una precisione maggiore rispetto al tipo di dati float."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni per il confronto di stringhe."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Aggregazione.Outputs[Output aggregazione 1].Columns[answerid]"
+                      dataType="ui8"
+                      lineageId="Package\Assignment 1\Aggregazione.Outputs[Output aggregazione 1].Columns[answerid]"
+                      name="answerid">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'ID della colonna di input utilizzata nell'aggregazione."
+                          name="AggregationColumnId">#{Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[answerid]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di aggregazione."
+                          name="AggregationType"
+                          typeConverter="AggregationType">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indica se la colonna richieste interventi di gestione speciali perché contiene dati di dimensioni eccessive o richiede una precisione maggiore rispetto al tipo di dati float."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni per il confronto di stringhe."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Assignment 1\Calculate confidence_avg and correct ratio"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Colonna derivata;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;0"
+              description="Crea nuovi valori di colonna applicando espressioni alle colonne di input della trasformazione. Creare nuove colonne oppure sovrascrivere quelle esistenti. Ad esempio, concatenare i valori delle colonne 'first name' e 'last name' per creare una colonna 'full name'."
+              name="Calculate confidence_avg and correct ratio"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Inputs[Input colonna derivata]"
+                  description="Input della trasformazione Colonna derivata"
+                  name="Input colonna derivata">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Inputs[Input colonna derivata].Columns[confidence_sum]"
+                      cachedDataType="r8"
+                      cachedName="confidence_sum"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[confidence_sum]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Inputs[Input colonna derivata].Columns[not_confidence_sum]"
+                      cachedDataType="r8"
+                      cachedName="not_confidence_sum"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[not_confidence_sum]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Inputs[Input colonna derivata].Columns[confidence_count]"
+                      cachedDataType="ui8"
+                      cachedName="confidence_count"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[confidence_count]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Inputs[Input colonna derivata].Columns[not_confidence_count]"
+                      cachedDataType="ui8"
+                      cachedName="not_confidence_count"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[not_confidence_count]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Inputs[Input colonna derivata].Columns[iscorrect]"
+                      cachedDataType="ui8"
+                      cachedName="iscorrect"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[iscorrect]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Inputs[Input colonna derivata].Columns[not_correct]"
+                      cachedDataType="ui8"
+                      cachedName="not_correct"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[not_correct]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Outputs[Output colonna derivata]"
+                  description="Output predefinito della trasformazione Colonna derivata"
+                  exclusionGroup="1"
+                  name="Output colonna derivata"
+                  synchronousInputId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Inputs[Input colonna derivata]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Outputs[Output colonna derivata].Columns[confidence_avg]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Calcolo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Outputs[Output colonna derivata].Columns[confidence_avg]"
+                      name="confidence_avg"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Espressione colonna derivata"
+                          name="Expression">(#{Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[confidence_sum]} + #{Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[not_confidence_sum]}) / (#{Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[confidence_count]} + #{Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[not_confidence_count]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Espressione descrittiva colonna derivata"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(confidence_sum + not_confidence_sum) / (confidence_count + not_confidence_count)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Outputs[Output colonna derivata].Columns[correct_ratio]"
+                      dataType="ui8"
+                      errorOrTruncationOperation="Calcolo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Outputs[Output colonna derivata].Columns[correct_ratio]"
+                      name="correct_ratio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Espressione colonna derivata"
+                          name="Expression">(#{Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[not_correct]} == (DT_UI8)0) ? (DT_UI8)0 : (#{Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[iscorrect]} / #{Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[not_correct]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Espressione descrittiva colonna derivata"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(not_correct == (DT_UI8)0) ? (DT_UI8)0 : (iscorrect / not_correct)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Outputs[Output errori colonna derivata]"
+                  description="Output degli errori della trasformazione Colonna derivata"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Output errori colonna derivata"
+                  synchronousInputId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Inputs[Input colonna derivata]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Outputs[Output errori colonna derivata].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Outputs[Output errori colonna derivata].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Outputs[Output errori colonna derivata].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Outputs[Output errori colonna derivata].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Assignment 1\Calculate subject confidence"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Colonna derivata;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;0"
+              description="Crea nuovi valori di colonna applicando espressioni alle colonne di input della trasformazione. Creare nuove colonne oppure sovrascrivere quelle esistenti. Ad esempio, concatenare i valori delle colonne 'first name' e 'last name' per creare una colonna 'full name'."
+              name="Calculate subject confidence"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Assignment 1\Calculate subject confidence.Inputs[Input colonna derivata]"
+                  description="Input della trasformazione Colonna derivata"
+                  name="Input colonna derivata">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Assignment 1\Calculate subject confidence.Inputs[Input colonna derivata].Columns[confidence_avg]"
+                      cachedDataType="r8"
+                      cachedName="confidence_avg"
+                      lineageId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Outputs[Output colonna derivata].Columns[confidence_avg]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Calculate subject confidence.Inputs[Input colonna derivata].Columns[correct_ratio]"
+                      cachedDataType="ui8"
+                      cachedName="correct_ratio"
+                      lineageId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Outputs[Output colonna derivata].Columns[correct_ratio]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Assignment 1\Calculate subject confidence.Outputs[Output colonna derivata]"
+                  description="Output predefinito della trasformazione Colonna derivata"
+                  exclusionGroup="1"
+                  name="Output colonna derivata"
+                  synchronousInputId="Package\Assignment 1\Calculate subject confidence.Inputs[Input colonna derivata]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Calculate subject confidence.Outputs[Output colonna derivata].Columns[sub_confidence]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Calcolo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Assignment 1\Calculate subject confidence.Outputs[Output colonna derivata].Columns[sub_confidence]"
+                      name="sub_confidence"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Espressione colonna derivata"
+                          name="Expression">[ROUND]((#{Package\Assignment 1\Calculate confidence_avg and correct ratio.Outputs[Output colonna derivata].Columns[correct_ratio]} * #{Package\Assignment 1\Calculate confidence_avg and correct ratio.Outputs[Output colonna derivata].Columns[confidence_avg]}),2)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Espressione descrittiva colonna derivata"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ROUND(([Correct ratio] * confidence_avg),2)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Assignment 1\Calculate subject confidence.Outputs[Output errori colonna derivata]"
+                  description="Output degli errori della trasformazione Colonna derivata"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Output errori colonna derivata"
+                  synchronousInputId="Package\Assignment 1\Calculate subject confidence.Inputs[Input colonna derivata]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Calculate subject confidence.Outputs[Output errori colonna derivata].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Calculate subject confidence.Outputs[Output errori colonna derivata].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Assignment 1\Calculate subject confidence.Outputs[Output errori colonna derivata].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Calculate subject confidence.Outputs[Output errori colonna derivata].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Assignment 1\Count correct answers"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregazione;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;3"
+              description="Aggrega i dati con funzioni quali Media, Somma, Conta numeri, Max e Min. Ad esempio, raggruppare i dati per calcolare la somma delle vendite per prodotto o la media giornaliera delle visite."
+              name="Count correct answers"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero approssimativo di chiavi Group By generate dall'aggregazione. Basso indica 500.000 valori di chiave, Medio indica 5 milioni di valori di chiave e Alto indica più di 25 milioni di valori di chiave. Non specificato indica che non viene utilizzato alcun valore KeyScale."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifica il numero esatto di chiavi Group By generate dall'aggregazione. Se si specifica un valore KeyScale, il valore di Keys ha la precedenza."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero approssimativo di valori Distinct in una colonna a cui viene applicata la funzione di aggregazione Count Distinct. Basso indica 500.000 valori di chiave, Medio indica 5 milioni di valori di chiave e Alto indica 25 milioni di valori di chiave. Non specificato indica che non viene utilizzato alcun valore CountDistinctScale."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifica il numero approssimativo di valori Distinct in una colonna a cui viene applicata la funzione di aggregazione Count Distinct. Se si specifica un valore CountDistinctScale, il valore in CountDistinctKeys ha la precedenza."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifica la percentuale di estensione della memoria consentita durante l'aggregazione. I valori validi sono compresi tra 1 e 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Assignment 1\Count correct answers.Inputs[Input aggregazione 1]"
+                  name="Input aggregazione 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Assignment 1\Count correct answers.Inputs[Input aggregazione 1].Columns[subjectid]"
+                      cachedDataType="i4"
+                      cachedName="subjectid"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[subjectid]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Count correct answers.Inputs[Input aggregazione 1].Columns[iscorrect]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="iscorrect"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[iscorrect]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Count correct answers.Inputs[Input aggregazione 1].Columns[confidence]"
+                      cachedDataType="r8"
+                      cachedName="confidence"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[confidence]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Assignment 1\Count correct answers.Outputs[Output aggregazione 1]"
+                  name="Output aggregazione 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifica il numero approssimativo di chiavi Group By generate dall'aggregazione. Basso indica 500.000 valori di chiave, Medio indica 5 milioni di valori di chiave e Alto indica più di 25 milioni di valori di chiave. Non specificato indica che non viene utilizzato alcun valore KeyScale."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifica il numero esatto di chiavi Group By generate dall'aggregazione. Se si specifica un valore KeyScale, il valore di Keys ha la precedenza."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Count correct answers.Outputs[Output aggregazione 1].Columns[subjectid]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Count correct answers.Outputs[Output aggregazione 1].Columns[subjectid]"
+                      name="subjectid">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'ID della colonna di input utilizzata nell'aggregazione."
+                          name="AggregationColumnId">#{Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[subjectid]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di aggregazione."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indica se la colonna richieste interventi di gestione speciali perché contiene dati di dimensioni eccessive o richiede una precisione maggiore rispetto al tipo di dati float."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni per il confronto di stringhe."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Count correct answers.Outputs[Output aggregazione 1].Columns[iscorrect]"
+                      dataType="ui8"
+                      lineageId="Package\Assignment 1\Count correct answers.Outputs[Output aggregazione 1].Columns[iscorrect]"
+                      name="iscorrect">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'ID della colonna di input utilizzata nell'aggregazione."
+                          name="AggregationColumnId">#{Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[iscorrect]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di aggregazione."
+                          name="AggregationType"
+                          typeConverter="AggregationType">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indica se la colonna richieste interventi di gestione speciali perché contiene dati di dimensioni eccessive o richiede una precisione maggiore rispetto al tipo di dati float."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni per il confronto di stringhe."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Count correct answers.Outputs[Output aggregazione 1].Columns[confidence_sum]"
+                      dataType="r8"
+                      lineageId="Package\Assignment 1\Count correct answers.Outputs[Output aggregazione 1].Columns[confidence_sum]"
+                      name="confidence_sum">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'ID della colonna di input utilizzata nell'aggregazione."
+                          name="AggregationColumnId">#{Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[confidence]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di aggregazione."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indica se la colonna richieste interventi di gestione speciali perché contiene dati di dimensioni eccessive o richiede una precisione maggiore rispetto al tipo di dati float."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni per il confronto di stringhe."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Count correct answers.Outputs[Output aggregazione 1].Columns[confidence_count]"
+                      dataType="ui8"
+                      lineageId="Package\Assignment 1\Count correct answers.Outputs[Output aggregazione 1].Columns[confidence_count]"
+                      name="confidence_count">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'ID della colonna di input utilizzata nell'aggregazione."
+                          name="AggregationColumnId">#{Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[confidence]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di aggregazione."
+                          name="AggregationType"
+                          typeConverter="AggregationType">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indica se la colonna richieste interventi di gestione speciali perché contiene dati di dimensioni eccessive o richiede una precisione maggiore rispetto al tipo di dati float."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni per il confronto di stringhe."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Assignment 1\Count not correct answers"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregazione;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;3"
+              description="Aggrega i dati con funzioni quali Media, Somma, Conta numeri, Max e Min. Ad esempio, raggruppare i dati per calcolare la somma delle vendite per prodotto o la media giornaliera delle visite."
+              name="Count not correct answers"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero approssimativo di chiavi Group By generate dall'aggregazione. Basso indica 500.000 valori di chiave, Medio indica 5 milioni di valori di chiave e Alto indica più di 25 milioni di valori di chiave. Non specificato indica che non viene utilizzato alcun valore KeyScale."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifica il numero esatto di chiavi Group By generate dall'aggregazione. Se si specifica un valore KeyScale, il valore di Keys ha la precedenza."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero approssimativo di valori Distinct in una colonna a cui viene applicata la funzione di aggregazione Count Distinct. Basso indica 500.000 valori di chiave, Medio indica 5 milioni di valori di chiave e Alto indica 25 milioni di valori di chiave. Non specificato indica che non viene utilizzato alcun valore CountDistinctScale."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifica il numero approssimativo di valori Distinct in una colonna a cui viene applicata la funzione di aggregazione Count Distinct. Se si specifica un valore CountDistinctScale, il valore in CountDistinctKeys ha la precedenza."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifica la percentuale di estensione della memoria consentita durante l'aggregazione. I valori validi sono compresi tra 1 e 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Assignment 1\Count not correct answers.Inputs[Input aggregazione 1]"
+                  name="Input aggregazione 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Assignment 1\Count not correct answers.Inputs[Input aggregazione 1].Columns[subjectid]"
+                      cachedDataType="i4"
+                      cachedName="subjectid"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[subjectid]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Count not correct answers.Inputs[Input aggregazione 1].Columns[iscorrect]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="iscorrect"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[iscorrect]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Count not correct answers.Inputs[Input aggregazione 1].Columns[confidence]"
+                      cachedDataType="r8"
+                      cachedName="confidence"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[confidence]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Assignment 1\Count not correct answers.Outputs[Output aggregazione 1]"
+                  name="Output aggregazione 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifica il numero approssimativo di chiavi Group By generate dall'aggregazione. Basso indica 500.000 valori di chiave, Medio indica 5 milioni di valori di chiave e Alto indica più di 25 milioni di valori di chiave. Non specificato indica che non viene utilizzato alcun valore KeyScale."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifica il numero esatto di chiavi Group By generate dall'aggregazione. Se si specifica un valore KeyScale, il valore di Keys ha la precedenza."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Count not correct answers.Outputs[Output aggregazione 1].Columns[subjectid]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Count not correct answers.Outputs[Output aggregazione 1].Columns[subjectid]"
+                      name="subjectid">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'ID della colonna di input utilizzata nell'aggregazione."
+                          name="AggregationColumnId">#{Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[subjectid]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di aggregazione."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indica se la colonna richieste interventi di gestione speciali perché contiene dati di dimensioni eccessive o richiede una precisione maggiore rispetto al tipo di dati float."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni per il confronto di stringhe."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Count not correct answers.Outputs[Output aggregazione 1].Columns[not_correct]"
+                      dataType="ui8"
+                      lineageId="Package\Assignment 1\Count not correct answers.Outputs[Output aggregazione 1].Columns[not_correct]"
+                      name="not_correct">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'ID della colonna di input utilizzata nell'aggregazione."
+                          name="AggregationColumnId">#{Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[iscorrect]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di aggregazione."
+                          name="AggregationType"
+                          typeConverter="AggregationType">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indica se la colonna richieste interventi di gestione speciali perché contiene dati di dimensioni eccessive o richiede una precisione maggiore rispetto al tipo di dati float."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni per il confronto di stringhe."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Count not correct answers.Outputs[Output aggregazione 1].Columns[not_confidence_sum]"
+                      dataType="r8"
+                      lineageId="Package\Assignment 1\Count not correct answers.Outputs[Output aggregazione 1].Columns[not_confidence_sum]"
+                      name="not_confidence_sum">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'ID della colonna di input utilizzata nell'aggregazione."
+                          name="AggregationColumnId">#{Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[confidence]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di aggregazione."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indica se la colonna richieste interventi di gestione speciali perché contiene dati di dimensioni eccessive o richiede una precisione maggiore rispetto al tipo di dati float."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni per il confronto di stringhe."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Count not correct answers.Outputs[Output aggregazione 1].Columns[not_confidence_count]"
+                      dataType="ui8"
+                      lineageId="Package\Assignment 1\Count not correct answers.Outputs[Output aggregazione 1].Columns[not_confidence_count]"
+                      name="not_confidence_count">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'ID della colonna di input utilizzata nell'aggregazione."
+                          name="AggregationColumnId">#{Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[confidence]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di aggregazione."
+                          name="AggregationType"
+                          typeConverter="AggregationType">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indica se la colonna richieste interventi di gestione speciali perché contiene dati di dimensioni eccessive o richiede una precisione maggiore rispetto al tipo di dati float."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni per il confronto di stringhe."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Assignment 1\Create csv file"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Destinazione file flat;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;1"
+              description="Destinazione file flat"
+              localeId="1033"
+              name="Create csv file"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifica se i dati verranno sovrascritti o accodati nel file di destinazione."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifica il testo da scrivere nel file di destinazione prima della scrittura dei dati."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="Quando il qualificatore di testo è abilitato, specifica se il qualificatore di testo nei dati scritti nel file di destinazione verrà o meno preceduto da un carattere di escape."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Assignment 1\Create csv file.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Assignment 1\Create csv file.Inputs[Input destinazione file flat]"
+                  hasSideEffects="true"
+                  name="Input destinazione file flat">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Assignment 1\Create csv file.Inputs[Input destinazione file flat].Columns[subjectid]"
+                      cachedDataType="i4"
+                      cachedName="subjectid"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Assignment 1\Create csv file.Inputs[Input destinazione file flat].ExternalColumns[subjectid]"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[subjectid]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Create csv file.Inputs[Input destinazione file flat].Columns[sub_confidence]"
+                      cachedDataType="r8"
+                      cachedName="sub_confidence"
+                      externalMetadataColumnId="Package\Assignment 1\Create csv file.Inputs[Input destinazione file flat].ExternalColumns[sub_confidence]"
+                      lineageId="Package\Assignment 1\Calculate subject confidence.Outputs[Output colonna derivata].Columns[sub_confidence]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Assignment 1\Create csv file.Inputs[Input destinazione file flat].ExternalColumns[subjectid]"
+                      dataType="i4"
+                      name="subjectid" />
+                    <externalMetadataColumn
+                      refId="Package\Assignment 1\Create csv file.Inputs[Input destinazione file flat].ExternalColumns[sub_confidence]"
+                      dataType="r8"
+                      name="sub_confidence" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Assignment 1\Divide in correcr and not correct values"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Suddivisione condizionale;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;0"
+              description="Indirizza righe di dati a output diversi a seconda del contenuto dei dati. Usare le condizioni (espressioni SSIS) per specificare le righe da indirizzare. Ad esempio, separare i record da eliminare da quelli pronti per essere caricati oppure indirizzare unicamente un subset di record."
+              name="Divide in correcr and not correct values"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Assignment 1\Divide in correcr and not correct values.Inputs[Input suddivisione condizionale]"
+                  description="Input della trasformazione Suddivisione condizionale"
+                  name="Input suddivisione condizionale">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Assignment 1\Divide in correcr and not correct values.Inputs[Input suddivisione condizionale].Columns[iscorrect]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="iscorrect"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[iscorrect]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Assignment 1\Divide in correcr and not correct values.Outputs[Correct]"
+                  description="Output 1 della trasformazione Suddivisione condizionale"
+                  errorOrTruncationOperation="Calcolo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Correct"
+                  synchronousInputId="Package\Assignment 1\Divide in correcr and not correct values.Inputs[Input suddivisione condizionale]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifica l'espressione. Questa versione dell'espressione utilizza gli identificatori di derivazione anziché i nomi di colonna."
+                      name="Expression">#{Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[iscorrect]} == "YES"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifica la versione descrittiva dell'espressione. Questa versione dell'espressione utilizza i nomi di colonna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">iscorrect == "YES"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifica la posizione della condizione nell'elenco delle condizioni valutate dalla trasformazione. L'ordine di valutazione è crescente, dal valore più basso al più alto."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Assignment 1\Divide in correcr and not correct values.Outputs[Not_correct]"
+                  description="Output 2 della trasformazione Suddivisione condizionale"
+                  errorOrTruncationOperation="Calcolo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Not_correct"
+                  synchronousInputId="Package\Assignment 1\Divide in correcr and not correct values.Inputs[Input suddivisione condizionale]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifica l'espressione. Questa versione dell'espressione utilizza gli identificatori di derivazione anziché i nomi di colonna."
+                      name="Expression">#{Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[iscorrect]} == "NO"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifica la versione descrittiva dell'espressione. Questa versione dell'espressione utilizza i nomi di colonna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">iscorrect == "NO"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifica la posizione della condizione nell'elenco delle condizioni valutate dalla trasformazione. L'ordine di valutazione è crescente, dal valore più basso al più alto."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Assignment 1\Divide in correcr and not correct values.Outputs[Output predefinito suddivisione condizionale]"
+                  description="Output predefinito per la trasformazione Suddivisione condizionale"
+                  exclusionGroup="1"
+                  name="Output predefinito suddivisione condizionale"
+                  synchronousInputId="Package\Assignment 1\Divide in correcr and not correct values.Inputs[Input suddivisione condizionale]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Assignment 1\Divide in correcr and not correct values.Outputs[Output errori suddivisione condizionale]"
+                  description="Output degli errori per la trasformazione Suddivisione condizionale"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Output errori suddivisione condizionale"
+                  synchronousInputId="Package\Assignment 1\Divide in correcr and not correct values.Inputs[Input suddivisione condizionale]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Divide in correcr and not correct values.Outputs[Output errori suddivisione condizionale].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Divide in correcr and not correct values.Outputs[Output errori suddivisione condizionale].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Assignment 1\Divide in correcr and not correct values.Outputs[Output errori suddivisione condizionale].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Divide in correcr and not correct values.Outputs[Output errori suddivisione condizionale].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Assignment 1\Fiter German and English student"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Suddivisione condizionale;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;0"
+              description="Indirizza righe di dati a output diversi a seconda del contenuto dei dati. Usare le condizioni (espressioni SSIS) per specificare le righe da indirizzare. Ad esempio, separare i record da eliminare da quelli pronti per essere caricati oppure indirizzare unicamente un subset di record."
+              name="Fiter German and English student"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Assignment 1\Fiter German and English student.Inputs[Input suddivisione condizionale]"
+                  description="Input della trasformazione Suddivisione condizionale"
+                  name="Input suddivisione condizionale">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Assignment 1\Fiter German and English student.Inputs[Input suddivisione condizionale].Columns[country_name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="country_name"
+                      lineageId="Package\Assignment 1\Join Geography table.Outputs[Output corrispondenza ricerca].Columns[country_name]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Assignment 1\Fiter German and English student.Outputs[German and English students]"
+                  description="Output 1 della trasformazione Suddivisione condizionale"
+                  errorOrTruncationOperation="Calcolo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="German and English students"
+                  synchronousInputId="Package\Assignment 1\Fiter German and English student.Inputs[Input suddivisione condizionale]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifica l'espressione. Questa versione dell'espressione utilizza gli identificatori di derivazione anziché i nomi di colonna."
+                      name="Expression">#{Package\Assignment 1\Join Geography table.Outputs[Output corrispondenza ricerca].Columns[country_name]} == "Germany" || #{Package\Assignment 1\Join Geography table.Outputs[Output corrispondenza ricerca].Columns[country_name]} == "United Kingdom"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifica la versione descrittiva dell'espressione. Questa versione dell'espressione utilizza i nomi di colonna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">country_name == "Germany" || country_name == "United Kingdom"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifica la posizione della condizione nell'elenco delle condizioni valutate dalla trasformazione. L'ordine di valutazione è crescente, dal valore più basso al più alto."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Assignment 1\Fiter German and English student.Outputs[Output predefinito suddivisione condizionale]"
+                  description="Output predefinito per la trasformazione Suddivisione condizionale"
+                  exclusionGroup="1"
+                  name="Output predefinito suddivisione condizionale"
+                  synchronousInputId="Package\Assignment 1\Fiter German and English student.Inputs[Input suddivisione condizionale]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Assignment 1\Fiter German and English student.Outputs[Output errori suddivisione condizionale]"
+                  description="Output degli errori per la trasformazione Suddivisione condizionale"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Output errori suddivisione condizionale"
+                  synchronousInputId="Package\Assignment 1\Fiter German and English student.Inputs[Input suddivisione condizionale]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Fiter German and English student.Outputs[Output errori suddivisione condizionale].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Fiter German and English student.Outputs[Output errori suddivisione condizionale].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Assignment 1\Fiter German and English student.Outputs[Output errori suddivisione condizionale].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Fiter German and English student.Outputs[Output errori suddivisione condizionale].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Assignment 1\Handle missing values"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Colonna derivata;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;0"
+              description="Crea nuovi valori di colonna applicando espressioni alle colonne di input della trasformazione. Creare nuove colonne oppure sovrascrivere quelle esistenti. Ad esempio, concatenare i valori delle colonne 'first name' e 'last name' per creare una colonna 'full name'."
+              name="Handle missing values"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Assignment 1\Handle missing values.Inputs[Input colonna derivata]"
+                  description="Input della trasformazione Colonna derivata"
+                  name="Input colonna derivata">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Assignment 1\Handle missing values.Inputs[Input colonna derivata].Columns[iscorrect]"
+                      cachedDataType="ui8"
+                      cachedName="iscorrect"
+                      errorOrTruncationOperation="Calcolo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[iscorrect]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Espressione colonna derivata"
+                          name="Expression">[REPLACENULL](#{Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[iscorrect]},0)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Espressione descrittiva colonna derivata"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(iscorrect,0)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Assignment 1\Handle missing values.Inputs[Input colonna derivata].Columns[not_correct]"
+                      cachedDataType="ui8"
+                      cachedName="not_correct"
+                      errorOrTruncationOperation="Calcolo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[not_correct]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Espressione colonna derivata"
+                          name="Expression">[REPLACENULL](#{Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[not_correct]},0)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Espressione descrittiva colonna derivata"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(not_correct,0)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Assignment 1\Handle missing values.Inputs[Input colonna derivata].Columns[confidence_sum]"
+                      cachedDataType="r8"
+                      cachedName="confidence_sum"
+                      errorOrTruncationOperation="Calcolo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[confidence_sum]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Espressione colonna derivata"
+                          name="Expression">[REPLACENULL](#{Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[confidence_sum]},0)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Espressione descrittiva colonna derivata"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(confidence_sum,0)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Assignment 1\Handle missing values.Inputs[Input colonna derivata].Columns[not_confidence_sum]"
+                      cachedDataType="r8"
+                      cachedName="not_confidence_sum"
+                      errorOrTruncationOperation="Calcolo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[not_confidence_sum]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Espressione colonna derivata"
+                          name="Expression">[REPLACENULL](#{Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[not_confidence_sum]},0)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Espressione descrittiva colonna derivata"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(not_confidence_sum,0)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Assignment 1\Handle missing values.Inputs[Input colonna derivata].Columns[confidence_count]"
+                      cachedDataType="ui8"
+                      cachedName="confidence_count"
+                      errorOrTruncationOperation="Calcolo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[confidence_count]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Espressione colonna derivata"
+                          name="Expression">[REPLACENULL](#{Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[confidence_count]},0)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Espressione descrittiva colonna derivata"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(confidence_count,0)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Assignment 1\Handle missing values.Inputs[Input colonna derivata].Columns[not_confidence_count]"
+                      cachedDataType="ui8"
+                      cachedName="not_confidence_count"
+                      errorOrTruncationOperation="Calcolo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[not_confidence_count]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Espressione colonna derivata"
+                          name="Expression">[REPLACENULL](#{Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[not_confidence_count]},0)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Espressione descrittiva colonna derivata"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(not_confidence_count,0)</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Assignment 1\Handle missing values.Outputs[Output colonna derivata]"
+                  description="Output predefinito della trasformazione Colonna derivata"
+                  exclusionGroup="1"
+                  name="Output colonna derivata"
+                  synchronousInputId="Package\Assignment 1\Handle missing values.Inputs[Input colonna derivata]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Assignment 1\Handle missing values.Outputs[Output errori colonna derivata]"
+                  description="Output degli errori della trasformazione Colonna derivata"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Output errori colonna derivata"
+                  synchronousInputId="Package\Assignment 1\Handle missing values.Inputs[Input colonna derivata]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Handle missing values.Outputs[Output errori colonna derivata].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Handle missing values.Outputs[Output errori colonna derivata].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Assignment 1\Handle missing values.Outputs[Output errori colonna derivata].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Handle missing values.Outputs[Output errori colonna derivata].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Assignment 1\Join Geography table"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Ricerca;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;6"
+              description="Crea un join delle colonne aggiuntive al flusso di dati cercando valori in una tabella. Ad esempio, creare un join della colonna 'employee id' alla tabella dei dipendenti per ottenere data di assunzione e nome del dipendente. Questa trasformazione è consigliata quando la memoria disponibile è sufficiente per la tabella di ricerca."
+              name="Join Geography table"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifica l'istruzione SQL che genera la tabella di ricerca."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [Group_8].[Geography]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifica un'istruzione SQL che utilizza parametri per generare la tabella di ricerca."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [Group_8].[Geography]) [refTable]
+where [refTable].[geoid] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il tipo di connessione utilizzata per accedere al set di dati di riferimento."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il tipo di cache della tabella di ricerca."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il modo in cui la trasformazione Ricerca gestisce le righe senza voci corrispondenti nel set di dati di riferimento."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica la percentuale della cache allocata per le righe senza voci corrispondenti nel set di dati di riferimento."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Utilizzo massimo della memoria per la cache dei riferimenti in una piattaforma a 32 bit."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Utilizzo massimo della memoria per la cache dei riferimenti in una piattaforma a 64 bit."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica se fare riferimento ai metadati in un formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="geoid" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="region" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="country_name" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="continent" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifica l'elenco di identificatori di derivazione corrispondenti ai parametri utilizzati dall'istruzione SQL nella proprietà SQLCommand. Le voci nell'elenco sono separate da punti e virgola."
+                  name="ParameterMap">#{Package\Assignment 1\Join to User table.Outputs[Output corrispondenza ricerca].Columns[geoid]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica la tabella codici della colonna da utilizzare quando l'origine dati non rende disponibili informazioni sulla tabella codici."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina se le chiavi duplicate nei dati di riferimento devono essere considerate come errori in caso di utilizzo della modalità di Full cache."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Assignment 1\Join Geography table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lds.di.unipi.it.Group_8_DB.Group_8]"
+                  connectionManagerRefId="Package.ConnectionManagers[lds.di.unipi.it.Group_8_DB.Group_8]"
+                  description="Gestione connessione utilizzata per accedere ai dati di ricerca."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Assignment 1\Join Geography table.Inputs[Input ricerca]"
+                  name="Input ricerca">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Assignment 1\Join Geography table.Inputs[Input ricerca].Columns[geoid]"
+                      cachedDataType="i4"
+                      cachedName="geoid"
+                      lineageId="Package\Assignment 1\Join to User table.Outputs[Output corrispondenza ricerca].Columns[geoid]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifica la colonna nella tabella di riferimento a cui viene unita in join una colonna."
+                          name="JoinToReferenceColumn">geoid</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifica la colonna nella tabella di riferimento da cui viene copiata una colonna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Assignment 1\Join Geography table.Outputs[Output corrispondenza ricerca]"
+                  errorOrTruncationOperation="Ricerca"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Output corrispondenza ricerca"
+                  synchronousInputId="Package\Assignment 1\Join Geography table.Inputs[Input ricerca]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Join Geography table.Outputs[Output corrispondenza ricerca].Columns[country_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copia colonna"
+                      length="50"
+                      lineageId="Package\Assignment 1\Join Geography table.Outputs[Output corrispondenza ricerca].Columns[country_name]"
+                      name="country_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifica la colonna nella tabella di riferimento da cui viene copiata una colonna."
+                          name="CopyFromReferenceColumn">country_name</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Assignment 1\Join Geography table.Outputs[Output nessuna corrispondenza ricerca]"
+                  description="Output ricerca che gestisce le righe senza voci corrispondenti nel set di dati di riferimento. Usare questo output quando la proprietà NoMatchBehavior è impostata su &quot;Invia le righe senza voci corrispondenti all'output nessuna corrispondenza&quot;."
+                  exclusionGroup="1"
+                  name="Output nessuna corrispondenza ricerca"
+                  synchronousInputId="Package\Assignment 1\Join Geography table.Inputs[Input ricerca]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Assignment 1\Join Geography table.Outputs[Output errori ricerca]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Output errori ricerca"
+                  synchronousInputId="Package\Assignment 1\Join Geography table.Inputs[Input ricerca]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Join Geography table.Outputs[Output errori ricerca].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Join Geography table.Outputs[Output errori ricerca].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Assignment 1\Join Geography table.Outputs[Output errori ricerca].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Join Geography table.Outputs[Output errori ricerca].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Assignment 1\Join to User table"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Ricerca;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;6"
+              description="Crea un join delle colonne aggiuntive al flusso di dati cercando valori in una tabella. Ad esempio, creare un join della colonna 'employee id' alla tabella dei dipendenti per ottenere data di assunzione e nome del dipendente. Questa trasformazione è consigliata quando la memoria disponibile è sufficiente per la tabella di ricerca."
+              name="Join to User table"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifica l'istruzione SQL che genera la tabella di ricerca."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [Group_8].[User]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifica un'istruzione SQL che utilizza parametri per generare la tabella di ricerca."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [Group_8].[User]) [refTable]
+where [refTable].[userid] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il tipo di connessione utilizzata per accedere al set di dati di riferimento."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il tipo di cache della tabella di ricerca."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il modo in cui la trasformazione Ricerca gestisce le righe senza voci corrispondenti nel set di dati di riferimento."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica la percentuale della cache allocata per le righe senza voci corrispondenti nel set di dati di riferimento."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Utilizzo massimo della memoria per la cache dei riferimenti in una piattaforma a 32 bit."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Utilizzo massimo della memoria per la cache dei riferimenti in una piattaforma a 64 bit."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica se fare riferimento ai metadati in un formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="userid" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dateofbirthid" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="geoid" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="gender" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifica l'elenco di identificatori di derivazione corrispondenti ai parametri utilizzati dall'istruzione SQL nella proprietà SQLCommand. Le voci nell'elenco sono separate da punti e virgola."
+                  name="ParameterMap">#{Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[userid]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica la tabella codici della colonna da utilizzare quando l'origine dati non rende disponibili informazioni sulla tabella codici."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina se le chiavi duplicate nei dati di riferimento devono essere considerate come errori in caso di utilizzo della modalità di Full cache."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Assignment 1\Join to User table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lds.di.unipi.it.Group_8_DB.Group_8]"
+                  connectionManagerRefId="Package.ConnectionManagers[lds.di.unipi.it.Group_8_DB.Group_8]"
+                  description="Gestione connessione utilizzata per accedere ai dati di ricerca."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Assignment 1\Join to User table.Inputs[Input ricerca]"
+                  name="Input ricerca">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Assignment 1\Join to User table.Inputs[Input ricerca].Columns[userid]"
+                      cachedDataType="i4"
+                      cachedName="userid"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[userid]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifica la colonna nella tabella di riferimento a cui viene unita in join una colonna."
+                          name="JoinToReferenceColumn">userid</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifica la colonna nella tabella di riferimento da cui viene copiata una colonna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Assignment 1\Join to User table.Outputs[Output corrispondenza ricerca]"
+                  errorOrTruncationOperation="Ricerca"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Output corrispondenza ricerca"
+                  synchronousInputId="Package\Assignment 1\Join to User table.Inputs[Input ricerca]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Join to User table.Outputs[Output corrispondenza ricerca].Columns[geoid]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copia colonna"
+                      lineageId="Package\Assignment 1\Join to User table.Outputs[Output corrispondenza ricerca].Columns[geoid]"
+                      name="geoid"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifica la colonna nella tabella di riferimento da cui viene copiata una colonna."
+                          name="CopyFromReferenceColumn">geoid</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Assignment 1\Join to User table.Outputs[Output nessuna corrispondenza ricerca]"
+                  description="Output ricerca che gestisce le righe senza voci corrispondenti nel set di dati di riferimento. Usare questo output quando la proprietà NoMatchBehavior è impostata su &quot;Invia le righe senza voci corrispondenti all'output nessuna corrispondenza&quot;."
+                  exclusionGroup="1"
+                  name="Output nessuna corrispondenza ricerca"
+                  synchronousInputId="Package\Assignment 1\Join to User table.Inputs[Input ricerca]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Assignment 1\Join to User table.Outputs[Output errori ricerca]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Output errori ricerca"
+                  synchronousInputId="Package\Assignment 1\Join to User table.Inputs[Input ricerca]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Join to User table.Outputs[Output errori ricerca].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Join to User table.Outputs[Output errori ricerca].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Assignment 1\Join to User table.Outputs[Output errori ricerca].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Join to User table.Outputs[Output errori ricerca].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Assignment 1\Merge join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;1"
+              description="Combina due flussi di dati ordinati in uno solo tramite join di tipo FULL, LEFT o INNER. Questa trasformazione è consigliata quando i flussi di dati possono essere ordinati alle relative origini."
+              name="Merge join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il tipo di join da eseguire."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero di colonne nella chiave di ordinamento."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se i valori Null vengono considerati come valori uguali."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indica il numero massimo di buffer richiesti per input prima dell'attivazione del blocco."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Assignment 1\Merge join.Inputs[Input merge join sinistro]"
+                  hasSideEffects="true"
+                  name="Input merge join sinistro">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Assignment 1\Merge join.Inputs[Input merge join sinistro].Columns[subjectid]"
+                      cachedDataType="i4"
+                      cachedName="subjectid"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Assignment 1\Ordinamento.Outputs[Output ordinamento].Columns[subjectid]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Assignment 1\Merge join.Inputs[Input merge join destro]"
+                  hasSideEffects="true"
+                  name="Input merge join destro">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Assignment 1\Merge join.Inputs[Input merge join destro].Columns[subjectid]"
+                      cachedDataType="i4"
+                      cachedName="subjectid"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Assignment 1\Sort by correct subject_id.Outputs[Output ordinamento].Columns[subjectid]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Merge join.Inputs[Input merge join destro].Columns[iscorrect]"
+                      cachedDataType="ui8"
+                      cachedName="iscorrect"
+                      lineageId="Package\Assignment 1\Sort by correct subject_id.Outputs[Output ordinamento].Columns[iscorrect]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Merge join.Inputs[Input merge join destro].Columns[confidence_sum]"
+                      cachedDataType="r8"
+                      cachedName="confidence_sum"
+                      lineageId="Package\Assignment 1\Sort by correct subject_id.Outputs[Output ordinamento].Columns[confidence_sum]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Merge join.Inputs[Input merge join destro].Columns[confidence_count]"
+                      cachedDataType="ui8"
+                      cachedName="confidence_count"
+                      lineageId="Package\Assignment 1\Sort by correct subject_id.Outputs[Output ordinamento].Columns[confidence_count]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Assignment 1\Merge join.Outputs[Output merge join]"
+                  isSorted="true"
+                  name="Output merge join">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Merge join.Outputs[Output merge join].Columns[subjectid]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Merge join.Outputs[Output merge join].Columns[subjectid]"
+                      name="subjectid"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonna di input associata a questa colonna di output"
+                          name="InputColumnID">#{Package\Assignment 1\Merge join.Inputs[Input merge join sinistro].Columns[subjectid]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Merge join.Outputs[Output merge join].Columns[iscorrect]"
+                      dataType="ui8"
+                      lineageId="Package\Assignment 1\Merge join.Outputs[Output merge join].Columns[iscorrect]"
+                      name="iscorrect">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonna di input associata a questa colonna di output"
+                          name="InputColumnID">#{Package\Assignment 1\Merge join.Inputs[Input merge join destro].Columns[iscorrect]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Merge join.Outputs[Output merge join].Columns[confidence_sum]"
+                      dataType="r8"
+                      lineageId="Package\Assignment 1\Merge join.Outputs[Output merge join].Columns[confidence_sum]"
+                      name="confidence_sum">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonna di input associata a questa colonna di output"
+                          name="InputColumnID">#{Package\Assignment 1\Merge join.Inputs[Input merge join destro].Columns[confidence_sum]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Merge join.Outputs[Output merge join].Columns[confidence_count]"
+                      dataType="ui8"
+                      lineageId="Package\Assignment 1\Merge join.Outputs[Output merge join].Columns[confidence_count]"
+                      name="confidence_count">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonna di input associata a questa colonna di output"
+                          name="InputColumnID">#{Package\Assignment 1\Merge join.Inputs[Input merge join destro].Columns[confidence_count]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Assignment 1\Merge join 1"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;1"
+              description="Combina due flussi di dati ordinati in uno solo tramite join di tipo FULL, LEFT o INNER. Questa trasformazione è consigliata quando i flussi di dati possono essere ordinati alle relative origini."
+              name="Merge join 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il tipo di join da eseguire."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero di colonne nella chiave di ordinamento."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se i valori Null vengono considerati come valori uguali."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indica il numero massimo di buffer richiesti per input prima dell'attivazione del blocco."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Assignment 1\Merge join 1.Inputs[Input merge join sinistro]"
+                  hasSideEffects="true"
+                  name="Input merge join sinistro">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Assignment 1\Merge join 1.Inputs[Input merge join sinistro].Columns[subjectid]"
+                      cachedDataType="i4"
+                      cachedName="subjectid"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Assignment 1\Merge join.Outputs[Output merge join].Columns[subjectid]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Merge join 1.Inputs[Input merge join sinistro].Columns[iscorrect]"
+                      cachedDataType="ui8"
+                      cachedName="iscorrect"
+                      lineageId="Package\Assignment 1\Merge join.Outputs[Output merge join].Columns[iscorrect]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Merge join 1.Inputs[Input merge join sinistro].Columns[confidence_sum]"
+                      cachedDataType="r8"
+                      cachedName="confidence_sum"
+                      lineageId="Package\Assignment 1\Merge join.Outputs[Output merge join].Columns[confidence_sum]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Merge join 1.Inputs[Input merge join sinistro].Columns[confidence_count]"
+                      cachedDataType="ui8"
+                      cachedName="confidence_count"
+                      lineageId="Package\Assignment 1\Merge join.Outputs[Output merge join].Columns[confidence_count]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Assignment 1\Merge join 1.Inputs[Input merge join destro]"
+                  hasSideEffects="true"
+                  name="Input merge join destro">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Assignment 1\Merge join 1.Inputs[Input merge join destro].Columns[subjectid]"
+                      cachedDataType="i4"
+                      cachedName="subjectid"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Assignment 1\Sort by not correct subject_id.Outputs[Output ordinamento].Columns[subjectid]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Merge join 1.Inputs[Input merge join destro].Columns[not_correct]"
+                      cachedDataType="ui8"
+                      cachedName="not_correct"
+                      lineageId="Package\Assignment 1\Sort by not correct subject_id.Outputs[Output ordinamento].Columns[not_correct]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Merge join 1.Inputs[Input merge join destro].Columns[not_confidence_sum]"
+                      cachedDataType="r8"
+                      cachedName="not_confidence_sum"
+                      lineageId="Package\Assignment 1\Sort by not correct subject_id.Outputs[Output ordinamento].Columns[not_confidence_sum]" />
+                    <inputColumn
+                      refId="Package\Assignment 1\Merge join 1.Inputs[Input merge join destro].Columns[not_confidence_count]"
+                      cachedDataType="ui8"
+                      cachedName="not_confidence_count"
+                      lineageId="Package\Assignment 1\Sort by not correct subject_id.Outputs[Output ordinamento].Columns[not_confidence_count]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Assignment 1\Merge join 1.Outputs[Output merge join]"
+                  isSorted="true"
+                  name="Output merge join">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[subjectid]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[subjectid]"
+                      name="subjectid"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonna di input associata a questa colonna di output"
+                          name="InputColumnID">#{Package\Assignment 1\Merge join 1.Inputs[Input merge join sinistro].Columns[subjectid]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[iscorrect]"
+                      dataType="ui8"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[iscorrect]"
+                      name="iscorrect">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonna di input associata a questa colonna di output"
+                          name="InputColumnID">#{Package\Assignment 1\Merge join 1.Inputs[Input merge join sinistro].Columns[iscorrect]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[not_correct]"
+                      dataType="ui8"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[not_correct]"
+                      name="not_correct">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonna di input associata a questa colonna di output"
+                          name="InputColumnID">#{Package\Assignment 1\Merge join 1.Inputs[Input merge join destro].Columns[not_correct]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[confidence_sum]"
+                      dataType="r8"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[confidence_sum]"
+                      name="confidence_sum">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonna di input associata a questa colonna di output"
+                          name="InputColumnID">#{Package\Assignment 1\Merge join 1.Inputs[Input merge join sinistro].Columns[confidence_sum]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[not_confidence_sum]"
+                      dataType="r8"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[not_confidence_sum]"
+                      name="not_confidence_sum">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonna di input associata a questa colonna di output"
+                          name="InputColumnID">#{Package\Assignment 1\Merge join 1.Inputs[Input merge join destro].Columns[not_confidence_sum]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[confidence_count]"
+                      dataType="ui8"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[confidence_count]"
+                      name="confidence_count">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonna di input associata a questa colonna di output"
+                          name="InputColumnID">#{Package\Assignment 1\Merge join 1.Inputs[Input merge join sinistro].Columns[confidence_count]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[not_confidence_count]"
+                      dataType="ui8"
+                      lineageId="Package\Assignment 1\Merge join 1.Outputs[Output merge join].Columns[not_confidence_count]"
+                      name="not_confidence_count">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonna di input associata a questa colonna di output"
+                          name="InputColumnID">#{Package\Assignment 1\Merge join 1.Inputs[Input merge join destro].Columns[not_confidence_count]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Assignment 1\Multicast"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;0"
+              description="Distribuisce ogni riga di input a ogni riga di uno o più output. Ad esempio, creare un nuovo ramo del flusso di dati per creare una copia dei dati in modo che sia possibile mascherare alcuni valori prima di condividerli con partner esterni."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\Assignment 1\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Assignment 1\Multicast.Outputs[Output multicast 2]"
+                  deleteOutputOnPathDetached="true"
+                  name="Output multicast 2"
+                  synchronousInputId="Package\Assignment 1\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Assignment 1\Multicast.Outputs[Output multicast 1]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Output multicast 1"
+                  synchronousInputId="Package\Assignment 1\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Assignment 1\Multicast.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Assignment 1\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Assignment 1\Ordinamento"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Ordinamento;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;1"
+              description="Ordina i dati di input in ordine crescente o decrescente quando non possono essere ordinati come la relativa origine. Ad esempio, ordinare i dati delle vendite per 'customer id' prima che vengano scritti in un file flat e recapitati a un altro reparto. Nota: questa trasformazione non è consigliata per i flussi di dati di grandi dimensioni."
+              name="Ordinamento"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se la trasformazione Ordinamento rimuove le righe con valori di ordinamento duplicati."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero massimo di thread da utilizzare per l'ordinamento."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Assignment 1\Ordinamento.Inputs[Input ordinamento]"
+                  name="Input ordinamento">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Assignment 1\Ordinamento.Inputs[Input ordinamento].Columns[subjectid]"
+                      cachedDataType="i4"
+                      cachedName="subjectid"
+                      lineageId="Package\Assignment 1\Aggregazione.Outputs[Output aggregazione 1].Columns[subjectid]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni di confronto per i dati di tipo carattere."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di ordinamento della colonna."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Assignment 1\Ordinamento.Inputs[Input ordinamento].Columns[answerid]"
+                      cachedDataType="ui8"
+                      cachedName="answerid"
+                      lineageId="Package\Assignment 1\Aggregazione.Outputs[Output aggregazione 1].Columns[answerid]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni di confronto per i dati di tipo carattere."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di ordinamento della colonna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Assignment 1\Ordinamento.Outputs[Output ordinamento]"
+                  isSorted="true"
+                  name="Output ordinamento">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Ordinamento.Outputs[Output ordinamento].Columns[subjectid]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Ordinamento.Outputs[Output ordinamento].Columns[subjectid]"
+                      name="subjectid"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'identificatore di derivazione della colonna di input associata a questa colonna di output."
+                          name="SortColumnId">#{Package\Assignment 1\Aggregazione.Outputs[Output aggregazione 1].Columns[subjectid]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Ordinamento.Outputs[Output ordinamento].Columns[answerid]"
+                      dataType="ui8"
+                      lineageId="Package\Assignment 1\Ordinamento.Outputs[Output ordinamento].Columns[answerid]"
+                      name="answerid">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'identificatore di derivazione della colonna di input associata a questa colonna di output."
+                          name="SortColumnId">#{Package\Assignment 1\Aggregazione.Outputs[Output aggregazione 1].Columns[answerid]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Assignment 1\Read Answers table"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origine OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;7"
+              description="Origine OLE DB"
+              name="Read Answers table"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Numero di secondi prima del timeout di un comando. Il valore 0 indica nessun timeout."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifica il nome dell'oggetto di database utilizzato per aprire un set di righe."
+                  name="OpenRowset">[Group_8].[Answers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifica la variabile contenente il nome dell'oggetto di database utilizzato per aprire un set di righe."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL da eseguire."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Variabile che contiene il comando SQL da eseguire."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica la tabella codici della colonna da utilizzare quando l'origine dati non rende disponibili informazioni sulla tabella codici."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forza l'utilizzo del valore della proprietà DefaultCodePage per la descrizione di dati di tipo carattere."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica la modalità utilizzata per accedere al database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Mapping tra i parametri nel comando SQL e le variabili."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Assignment 1\Read Answers table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lds.di.unipi.it.Group_8_DB.Group_8]"
+                  connectionManagerRefId="Package.ConnectionManagers[lds.di.unipi.it.Group_8_DB.Group_8]"
+                  description="Connessione di run-time OLE DB utilizzata per accedere al database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB]"
+                  name="Output origine OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[answerid]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversione"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].ExternalColumns[answerid]"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[answerid]"
+                      name="answerid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[userid]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversione"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].ExternalColumns[userid]"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[userid]"
+                      name="userid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[subjectid]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversione"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].ExternalColumns[subjectid]"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[subjectid]"
+                      name="subjectid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[iscorrect]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversione"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].ExternalColumns[iscorrect]"
+                      length="5"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[iscorrect]"
+                      name="iscorrect"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[confidence]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversione"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].ExternalColumns[confidence]"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].Columns[confidence]"
+                      name="confidence"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].ExternalColumns[answerid]"
+                      dataType="i4"
+                      name="answerid" />
+                    <externalMetadataColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].ExternalColumns[questionid]"
+                      dataType="i4"
+                      name="questionid" />
+                    <externalMetadataColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].ExternalColumns[userid]"
+                      dataType="i4"
+                      name="userid" />
+                    <externalMetadataColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].ExternalColumns[organizationid]"
+                      dataType="i4"
+                      name="organizationid" />
+                    <externalMetadataColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].ExternalColumns[dateid]"
+                      dataType="i4"
+                      name="dateid" />
+                    <externalMetadataColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].ExternalColumns[subjectid]"
+                      dataType="i4"
+                      name="subjectid" />
+                    <externalMetadataColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].ExternalColumns[answer_value]"
+                      dataType="i4"
+                      name="answer_value" />
+                    <externalMetadataColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].ExternalColumns[correct_answer]"
+                      dataType="i4"
+                      name="correct_answer" />
+                    <externalMetadataColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].ExternalColumns[iscorrect]"
+                      dataType="wstr"
+                      length="5"
+                      name="iscorrect" />
+                    <externalMetadataColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB].ExternalColumns[confidence]"
+                      dataType="r8"
+                      name="confidence" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Assignment 1\Read Answers table.Outputs[Output errori origine OLE DB]"
+                  isErrorOut="true"
+                  name="Output errori origine OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output errori origine OLE DB].Columns[answerid]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output errori origine OLE DB].Columns[answerid]"
+                      name="answerid" />
+                    <outputColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output errori origine OLE DB].Columns[userid]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output errori origine OLE DB].Columns[userid]"
+                      name="userid" />
+                    <outputColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output errori origine OLE DB].Columns[subjectid]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output errori origine OLE DB].Columns[subjectid]"
+                      name="subjectid" />
+                    <outputColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output errori origine OLE DB].Columns[iscorrect]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output errori origine OLE DB].Columns[iscorrect]"
+                      name="iscorrect" />
+                    <outputColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output errori origine OLE DB].Columns[confidence]"
+                      dataType="r8"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output errori origine OLE DB].Columns[confidence]"
+                      name="confidence" />
+                    <outputColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output errori origine OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output errori origine OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Assignment 1\Read Answers table.Outputs[Output errori origine OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Read Answers table.Outputs[Output errori origine OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Assignment 1\Sort by correct subject_id"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Ordinamento;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;1"
+              description="Ordina i dati di input in ordine crescente o decrescente quando non possono essere ordinati come la relativa origine. Ad esempio, ordinare i dati delle vendite per 'customer id' prima che vengano scritti in un file flat e recapitati a un altro reparto. Nota: questa trasformazione non è consigliata per i flussi di dati di grandi dimensioni."
+              name="Sort by correct subject_id"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se la trasformazione Ordinamento rimuove le righe con valori di ordinamento duplicati."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero massimo di thread da utilizzare per l'ordinamento."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Assignment 1\Sort by correct subject_id.Inputs[Input ordinamento]"
+                  name="Input ordinamento">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Assignment 1\Sort by correct subject_id.Inputs[Input ordinamento].Columns[subjectid]"
+                      cachedDataType="i4"
+                      cachedName="subjectid"
+                      lineageId="Package\Assignment 1\Count correct answers.Outputs[Output aggregazione 1].Columns[subjectid]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni di confronto per i dati di tipo carattere."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di ordinamento della colonna."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Assignment 1\Sort by correct subject_id.Inputs[Input ordinamento].Columns[iscorrect]"
+                      cachedDataType="ui8"
+                      cachedName="iscorrect"
+                      lineageId="Package\Assignment 1\Count correct answers.Outputs[Output aggregazione 1].Columns[iscorrect]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni di confronto per i dati di tipo carattere."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di ordinamento della colonna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Assignment 1\Sort by correct subject_id.Inputs[Input ordinamento].Columns[confidence_sum]"
+                      cachedDataType="r8"
+                      cachedName="confidence_sum"
+                      lineageId="Package\Assignment 1\Count correct answers.Outputs[Output aggregazione 1].Columns[confidence_sum]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni di confronto per i dati di tipo carattere."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di ordinamento della colonna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Assignment 1\Sort by correct subject_id.Inputs[Input ordinamento].Columns[confidence_count]"
+                      cachedDataType="ui8"
+                      cachedName="confidence_count"
+                      lineageId="Package\Assignment 1\Count correct answers.Outputs[Output aggregazione 1].Columns[confidence_count]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni di confronto per i dati di tipo carattere."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di ordinamento della colonna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Assignment 1\Sort by correct subject_id.Outputs[Output ordinamento]"
+                  isSorted="true"
+                  name="Output ordinamento">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Sort by correct subject_id.Outputs[Output ordinamento].Columns[subjectid]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Sort by correct subject_id.Outputs[Output ordinamento].Columns[subjectid]"
+                      name="subjectid"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'identificatore di derivazione della colonna di input associata a questa colonna di output."
+                          name="SortColumnId">#{Package\Assignment 1\Count correct answers.Outputs[Output aggregazione 1].Columns[subjectid]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Sort by correct subject_id.Outputs[Output ordinamento].Columns[iscorrect]"
+                      dataType="ui8"
+                      lineageId="Package\Assignment 1\Sort by correct subject_id.Outputs[Output ordinamento].Columns[iscorrect]"
+                      name="iscorrect">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'identificatore di derivazione della colonna di input associata a questa colonna di output."
+                          name="SortColumnId">#{Package\Assignment 1\Count correct answers.Outputs[Output aggregazione 1].Columns[iscorrect]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Sort by correct subject_id.Outputs[Output ordinamento].Columns[confidence_sum]"
+                      dataType="r8"
+                      lineageId="Package\Assignment 1\Sort by correct subject_id.Outputs[Output ordinamento].Columns[confidence_sum]"
+                      name="confidence_sum">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'identificatore di derivazione della colonna di input associata a questa colonna di output."
+                          name="SortColumnId">#{Package\Assignment 1\Count correct answers.Outputs[Output aggregazione 1].Columns[confidence_sum]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Sort by correct subject_id.Outputs[Output ordinamento].Columns[confidence_count]"
+                      dataType="ui8"
+                      lineageId="Package\Assignment 1\Sort by correct subject_id.Outputs[Output ordinamento].Columns[confidence_count]"
+                      name="confidence_count">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'identificatore di derivazione della colonna di input associata a questa colonna di output."
+                          name="SortColumnId">#{Package\Assignment 1\Count correct answers.Outputs[Output aggregazione 1].Columns[confidence_count]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Assignment 1\Sort by not correct subject_id"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Ordinamento;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;1"
+              description="Ordina i dati di input in ordine crescente o decrescente quando non possono essere ordinati come la relativa origine. Ad esempio, ordinare i dati delle vendite per 'customer id' prima che vengano scritti in un file flat e recapitati a un altro reparto. Nota: questa trasformazione non è consigliata per i flussi di dati di grandi dimensioni."
+              name="Sort by not correct subject_id"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se la trasformazione Ordinamento rimuove le righe con valori di ordinamento duplicati."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero massimo di thread da utilizzare per l'ordinamento."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Assignment 1\Sort by not correct subject_id.Inputs[Input ordinamento]"
+                  name="Input ordinamento">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Assignment 1\Sort by not correct subject_id.Inputs[Input ordinamento].Columns[subjectid]"
+                      cachedDataType="i4"
+                      cachedName="subjectid"
+                      lineageId="Package\Assignment 1\Count not correct answers.Outputs[Output aggregazione 1].Columns[subjectid]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni di confronto per i dati di tipo carattere."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di ordinamento della colonna."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Assignment 1\Sort by not correct subject_id.Inputs[Input ordinamento].Columns[not_correct]"
+                      cachedDataType="ui8"
+                      cachedName="not_correct"
+                      lineageId="Package\Assignment 1\Count not correct answers.Outputs[Output aggregazione 1].Columns[not_correct]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni di confronto per i dati di tipo carattere."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di ordinamento della colonna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Assignment 1\Sort by not correct subject_id.Inputs[Input ordinamento].Columns[not_confidence_sum]"
+                      cachedDataType="r8"
+                      cachedName="not_confidence_sum"
+                      lineageId="Package\Assignment 1\Count not correct answers.Outputs[Output aggregazione 1].Columns[not_confidence_sum]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni di confronto per i dati di tipo carattere."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di ordinamento della colonna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Assignment 1\Sort by not correct subject_id.Inputs[Input ordinamento].Columns[not_confidence_count]"
+                      cachedDataType="ui8"
+                      cachedName="not_confidence_count"
+                      lineageId="Package\Assignment 1\Count not correct answers.Outputs[Output aggregazione 1].Columns[not_confidence_count]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica le opzioni di confronto per i dati di tipo carattere."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifica il tipo di ordinamento della colonna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Assignment 1\Sort by not correct subject_id.Outputs[Output ordinamento]"
+                  isSorted="true"
+                  name="Output ordinamento">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Assignment 1\Sort by not correct subject_id.Outputs[Output ordinamento].Columns[subjectid]"
+                      dataType="i4"
+                      lineageId="Package\Assignment 1\Sort by not correct subject_id.Outputs[Output ordinamento].Columns[subjectid]"
+                      name="subjectid"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'identificatore di derivazione della colonna di input associata a questa colonna di output."
+                          name="SortColumnId">#{Package\Assignment 1\Count not correct answers.Outputs[Output aggregazione 1].Columns[subjectid]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Sort by not correct subject_id.Outputs[Output ordinamento].Columns[not_correct]"
+                      dataType="ui8"
+                      lineageId="Package\Assignment 1\Sort by not correct subject_id.Outputs[Output ordinamento].Columns[not_correct]"
+                      name="not_correct">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'identificatore di derivazione della colonna di input associata a questa colonna di output."
+                          name="SortColumnId">#{Package\Assignment 1\Count not correct answers.Outputs[Output aggregazione 1].Columns[not_correct]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Sort by not correct subject_id.Outputs[Output ordinamento].Columns[not_confidence_sum]"
+                      dataType="r8"
+                      lineageId="Package\Assignment 1\Sort by not correct subject_id.Outputs[Output ordinamento].Columns[not_confidence_sum]"
+                      name="not_confidence_sum">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'identificatore di derivazione della colonna di input associata a questa colonna di output."
+                          name="SortColumnId">#{Package\Assignment 1\Count not correct answers.Outputs[Output aggregazione 1].Columns[not_confidence_sum]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Assignment 1\Sort by not correct subject_id.Outputs[Output ordinamento].Columns[not_confidence_count]"
+                      dataType="ui8"
+                      lineageId="Package\Assignment 1\Sort by not correct subject_id.Outputs[Output ordinamento].Columns[not_confidence_count]"
+                      name="not_confidence_count">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifica l'identificatore di derivazione della colonna di input associata a questa colonna di output."
+                          name="SortColumnId">#{Package\Assignment 1\Count not correct answers.Outputs[Output aggregazione 1].Columns[not_confidence_count]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Assignment 1.Paths[Correct]"
+              endId="Package\Assignment 1\Count correct answers.Inputs[Input aggregazione 1]"
+              name="Correct"
+              startId="Package\Assignment 1\Divide in correcr and not correct values.Outputs[Correct]" />
+            <path
+              refId="Package\Assignment 1.Paths[German and English students]"
+              endId="Package\Assignment 1\Multicast.Inputs[Multicast Input 1]"
+              name="German and English students"
+              startId="Package\Assignment 1\Fiter German and English student.Outputs[German and English students]" />
+            <path
+              refId="Package\Assignment 1.Paths[Multicast Output 1]"
+              endId="Package\Assignment 1\Divide in correcr and not correct values.Inputs[Input suddivisione condizionale]"
+              name="Multicast Output 1"
+              startId="Package\Assignment 1\Multicast.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\Assignment 1.Paths[Not_correct]"
+              endId="Package\Assignment 1\Count not correct answers.Inputs[Input aggregazione 1]"
+              name="Not_correct"
+              startId="Package\Assignment 1\Divide in correcr and not correct values.Outputs[Not_correct]" />
+            <path
+              refId="Package\Assignment 1.Paths[Output aggregazione 1]"
+              endId="Package\Assignment 1\Sort by not correct subject_id.Inputs[Input ordinamento]"
+              name="Output aggregazione 1"
+              startId="Package\Assignment 1\Count not correct answers.Outputs[Output aggregazione 1]" />
+            <path
+              refId="Package\Assignment 1.Paths[Output aggregazione 11]"
+              endId="Package\Assignment 1\Sort by correct subject_id.Inputs[Input ordinamento]"
+              name="Output aggregazione 1"
+              startId="Package\Assignment 1\Count correct answers.Outputs[Output aggregazione 1]" />
+            <path
+              refId="Package\Assignment 1.Paths[Output aggregazione 12]"
+              endId="Package\Assignment 1\Ordinamento.Inputs[Input ordinamento]"
+              name="Output aggregazione 1"
+              startId="Package\Assignment 1\Aggregazione.Outputs[Output aggregazione 1]" />
+            <path
+              refId="Package\Assignment 1.Paths[Output colonna derivata1]"
+              endId="Package\Assignment 1\Create csv file.Inputs[Input destinazione file flat]"
+              name="Output colonna derivata"
+              startId="Package\Assignment 1\Calculate subject confidence.Outputs[Output colonna derivata]" />
+            <path
+              refId="Package\Assignment 1.Paths[Output colonna derivata2]"
+              endId="Package\Assignment 1\Calculate subject confidence.Inputs[Input colonna derivata]"
+              name="Output colonna derivata"
+              startId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Outputs[Output colonna derivata]" />
+            <path
+              refId="Package\Assignment 1.Paths[Output colonna derivata]"
+              endId="Package\Assignment 1\Calculate confidence_avg and correct ratio.Inputs[Input colonna derivata]"
+              name="Output colonna derivata"
+              startId="Package\Assignment 1\Handle missing values.Outputs[Output colonna derivata]" />
+            <path
+              refId="Package\Assignment 1.Paths[Output corrispondenza ricerca]"
+              endId="Package\Assignment 1\Fiter German and English student.Inputs[Input suddivisione condizionale]"
+              name="Output corrispondenza ricerca"
+              startId="Package\Assignment 1\Join Geography table.Outputs[Output corrispondenza ricerca]" />
+            <path
+              refId="Package\Assignment 1.Paths[Output corrispondenza ricerca1]"
+              endId="Package\Assignment 1\Join Geography table.Inputs[Input ricerca]"
+              name="Output corrispondenza ricerca"
+              startId="Package\Assignment 1\Join to User table.Outputs[Output corrispondenza ricerca]" />
+            <path
+              refId="Package\Assignment 1.Paths[Output merge join]"
+              endId="Package\Assignment 1\Handle missing values.Inputs[Input colonna derivata]"
+              name="Output merge join"
+              startId="Package\Assignment 1\Merge join 1.Outputs[Output merge join]" />
+            <path
+              refId="Package\Assignment 1.Paths[Output merge join1]"
+              endId="Package\Assignment 1\Merge join 1.Inputs[Input merge join sinistro]"
+              name="Output merge join"
+              startId="Package\Assignment 1\Merge join.Outputs[Output merge join]" />
+            <path
+              refId="Package\Assignment 1.Paths[Output multicast 2]"
+              endId="Package\Assignment 1\Aggregazione.Inputs[Input aggregazione 1]"
+              name="Output multicast 2"
+              startId="Package\Assignment 1\Multicast.Outputs[Output multicast 2]" />
+            <path
+              refId="Package\Assignment 1.Paths[Output ordinamento2]"
+              endId="Package\Assignment 1\Merge join.Inputs[Input merge join destro]"
+              name="Output ordinamento"
+              startId="Package\Assignment 1\Sort by correct subject_id.Outputs[Output ordinamento]" />
+            <path
+              refId="Package\Assignment 1.Paths[Output ordinamento]"
+              endId="Package\Assignment 1\Merge join 1.Inputs[Input merge join destro]"
+              name="Output ordinamento"
+              startId="Package\Assignment 1\Sort by not correct subject_id.Outputs[Output ordinamento]" />
+            <path
+              refId="Package\Assignment 1.Paths[Output ordinamento1]"
+              endId="Package\Assignment 1\Merge join.Inputs[Input merge join sinistro]"
+              name="Output ordinamento"
+              startId="Package\Assignment 1\Ordinamento.Outputs[Output ordinamento]" />
+            <path
+              refId="Package\Assignment 1.Paths[Output origine OLE DB]"
+              endId="Package\Assignment 1\Join to User table.Inputs[Input ricerca]"
+              name="Output origine OLE DB"
+              startId="Package\Assignment 1\Read Answers table.Outputs[Output origine OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="142.5,42"
+          Id="Package\Assignment 1"
+          TopLeft="348,85.5833329082363" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Assignment 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="160.5,42"
+          Id="Package\Assignment 1\Join to User table"
+          TopLeft="403,99.6666661716174" />
+        <NodeLayout
+          Size="235.5,42"
+          Id="Package\Assignment 1\Fiter German and English student"
+          TopLeft="361,298.58333210109" />
+        <NodeLayout
+          Size="277.5,42"
+          Id="Package\Assignment 1\Calculate confidence_avg and correct ratio"
+          TopLeft="277.444444444444,975.634257489218" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Assignment 1\Read Answers table"
+          TopLeft="402.5,16.7916665832616" />
+        <NodeLayout
+          Size="260.5,42"
+          Id="Package\Assignment 1\Divide in correcr and not correct values"
+          TopLeft="350.5,475.749998789281" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Assignment 1\Sort by correct subject_id"
+          TopLeft="275.5,651.08333171366" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Assignment 1\Count correct answers"
+          TopLeft="278.5,565.999998353422" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\Assignment 1\Count not correct answers"
+          TopLeft="505.5,563.791665420971" />
+        <NodeLayout
+          Size="178.5,42"
+          Id="Package\Assignment 1\Join Geography table"
+          TopLeft="390,197.166665687329" />
+        <NodeLayout
+          Size="145.5,42"
+          Id="Package\Assignment 1\Create csv file"
+          TopLeft="341.833333333333,1153.6111097013" />
+        <NodeLayout
+          Size="212.5,42"
+          Id="Package\Assignment 1\Calculate subject confidence"
+          TopLeft="308.333333333333,1055.55092422584" />
+        <NodeLayout
+          Size="140,42"
+          Id="Package\Assignment 1\Ordinamento"
+          TopLeft="104,652.041665566257" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Assignment 1\Aggregazione"
+          TopLeft="107.5,479.458332593449" />
+        <NodeLayout
+          Size="214.5,42"
+          Id="Package\Assignment 1\Sort by not correct subject_id"
+          TopLeft="502.5,650.833332020375" />
+        <EdgeLayout
+          Id="Package\Assignment 1.Paths[Output aggregazione 12]"
+          TopLeft="176.75,521.458332593449">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,130.583332972808"
+              Start="0,0"
+              End="0,123.083332972808">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,123.083332972808" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Assignment 1.Paths[Output aggregazione 11]"
+          TopLeft="372.25,607.999998353422">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.0833333602378"
+              Start="0,0"
+              End="0,35.5833333602378">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5833333602378" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Assignment 1.Paths[Output aggregazione 1]"
+          TopLeft="607.875,605.791665420971">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.0416665994044"
+              Start="0,0"
+              End="0,37.5416665994044">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5416665994044" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Assignment 1.Paths[Not_correct]"
+          TopLeft="522.833333333333,517.749998789281">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="83.1666666666667,46.04166663169"
+              Start="0,0"
+              End="83.1666666666667,38.54166663169">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.5853045770042" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.5853045770042"
+                    Point2="0,18.5853045770042"
+                    Point3="4,18.5853045770042" />
+                  <mssgle:LineSegment
+                    End="79.1666666666667,18.5853045770042" />
+                  <mssgle:CubicBezierSegment
+                    Point1="79.1666666666667,18.5853045770042"
+                    Point2="83.1666666666667,18.5853045770042"
+                    Point3="83.1666666666667,22.5853045770042" />
+                  <mssgle:LineSegment
+                    End="83.1666666666667,38.54166663169" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="15.2819466145834,23.5853045770042,52.6027734375,10.7353515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Assignment 1.Paths[Correct]"
+          TopLeft="438.666666666667,517.749998789281">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-68.1666666666666,48.2499995641411"
+              Start="0,0"
+              End="-68.1666666666666,40.7499995641411">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.47672626435" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.47672626435"
+                    Point2="0,19.47672626435"
+                    Point3="-4,19.47672626435" />
+                  <mssgle:LineSegment
+                    End="-64.1666666666666,19.47672626435" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-64.1666666666666,19.47672626435"
+                    Point2="-68.1666666666666,19.47672626435"
+                    Point3="-68.1666666666666,23.47672626435" />
+                  <mssgle:LineSegment
+                    End="-68.1666666666666,40.7499995641411" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-50.8422395833333,24.47672626435,33.5178125,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Assignment 1.Paths[Output origine OLE DB]"
+          TopLeft="486.125,58.7916665832616">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.8749995883558"
+              Start="0,0"
+              End="0,33.3749995883558">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.3749995883558" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Assignment 1.Paths[Output corrispondenza ricerca]"
+          TopLeft="479,239.166665687329">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.4166664137609"
+              Start="0,0"
+              End="0,51.9166664137609">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.9166664137609" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-66.78587890625,20.1536457068805,133.5717578125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Assignment 1.Paths[Output corrispondenza ricerca1]"
+          TopLeft="481.25,141.666666171617">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.4999995157118"
+              Start="0,0"
+              End="0,47.9999995157118">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.9999995157118" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-66.78587890625,18.1953122578559,133.5717578125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Assignment 1.Paths[Output colonna derivata1]"
+          TopLeft="414.583333333333,1097.55092422584">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.0601854754616"
+              Start="0,0"
+              End="0,48.5601854754616">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5601854754616" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,16.2800927377308,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Assignment 1.Paths[Output colonna derivata2]"
+          TopLeft="415.388888888889,1017.63425748922">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.9166667366176"
+              Start="0,0"
+              End="0,30.4166667366176">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.4166667366176" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="136.5,42"
+          Id="Package\Assignment 1\Merge join 1"
+          TopLeft="346,820.333331762089" />
+        <EdgeLayout
+          Id="Package\Assignment 1.Paths[Output ordinamento]"
+          TopLeft="609.75,692.833332020375">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-174.083333333333,127.499999741713"
+              Start="0,0"
+              End="-174.083333333333,119.999999741713">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,103.128836940412" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,103.128836940412"
+                    Point2="0,107.128836940412"
+                    Point3="-4,107.128836940412" />
+                  <mssgle:LineSegment
+                    End="-170.083333333333,107.128836940412" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-170.083333333333,107.128836940412"
+                    Point2="-174.083333333333,107.128836940412"
+                    Point3="-174.083333333333,111.128836940412" />
+                  <mssgle:LineSegment
+                    End="-174.083333333333,119.999999741713" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="128,42"
+          Id="Package\Assignment 1\Merge join"
+          TopLeft="202,738.29166613126" />
+        <EdgeLayout
+          Id="Package\Assignment 1.Paths[Output merge join1]"
+          TopLeft="266,780.29166613126">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="148.25,40.041665630829"
+              Start="0,0"
+              End="148.25,32.541665630829">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.0208328154145" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.0208328154145"
+                    Point2="0,20.0208328154145"
+                    Point3="4,20.0208328154145" />
+                  <mssgle:LineSegment
+                    End="144.25,20.0208328154145" />
+                  <mssgle:CubicBezierSegment
+                    Point1="144.25,20.0208328154145"
+                    Point2="148.25,20.0208328154145"
+                    Point3="148.25,24.0208328154145" />
+                  <mssgle:LineSegment
+                    End="148.25,32.541665630829" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Assignment 1.Paths[Output ordinamento1]"
+          TopLeft="174,694.041665566257">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="72,44.2500005650023"
+              Start="0,0"
+              End="72,36.7500005650023">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.2222225570384" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.2222225570384"
+                    Point2="0,26.2222225570384"
+                    Point3="4,26.2222225570384" />
+                  <mssgle:LineSegment
+                    End="68,26.2222225570384" />
+                  <mssgle:CubicBezierSegment
+                    Point1="68,26.2222225570384"
+                    Point2="72,26.2222225570384"
+                    Point3="72,30.2222225570384" />
+                  <mssgle:LineSegment
+                    End="72,36.7500005650023" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Assignment 1.Paths[Output ordinamento2]"
+          TopLeft="374,693.08333171366">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-88,45.2083344175995"
+              Start="0,0"
+              End="-88,37.7083344175995">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.7901240993182" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.7901240993182"
+                    Point2="0,26.7901240993182"
+                    Point3="-4,26.7901240993182" />
+                  <mssgle:LineSegment
+                    End="-84,26.7901240993182" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-84,26.7901240993182"
+                    Point2="-88,26.7901240993182"
+                    Point3="-88,30.7901240993182" />
+                  <mssgle:LineSegment
+                    End="-88,37.7083344175995" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120.5,42"
+          Id="Package\Assignment 1\Multicast"
+          TopLeft="419.5,388.749999176711" />
+        <EdgeLayout
+          Id="Package\Assignment 1.Paths[Output multicast 2]"
+          TopLeft="461,430.749999176711">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-281.5,48.7083334167385"
+              Start="0,0"
+              End="-281.5,41.2083334167385">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.8662981503159" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.8662981503159"
+                    Point2="0,19.8662981503159"
+                    Point3="-4,19.8662981503159" />
+                  <mssgle:LineSegment
+                    End="-277.5,19.8662981503159" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-277.5,19.8662981503159"
+                    Point2="-281.5,19.8662981503159"
+                    Point3="-281.5,23.8662981503159" />
+                  <mssgle:LineSegment
+                    End="-281.5,41.2083334167385" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Assignment 1.Paths[German and English students]"
+          TopLeft="479.25,340.58333210109">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.1666670756209"
+              Start="0,0"
+              End="0,40.6666670756209">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.6666670756209" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-65.44509765625,14.5017905690605,130.8901953125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Assignment 1.Paths[Multicast Output 1]"
+          TopLeft="480.25,430.749999176711">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.9999996125703"
+              Start="0,0"
+              End="0,37.4999996125703">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.4999996125703" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Assignment 1\Handle missing values"
+          TopLeft="322.777777777778,896.157406543462" />
+        <EdgeLayout
+          Id="Package\Assignment 1.Paths[Output merge join]"
+          TopLeft="414.513888888889,862.333331762089">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.8240747813732"
+              Start="0,0"
+              End="0,26.3240747813732">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.3240747813732" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Assignment 1.Paths[Output colonna derivata]"
+          TopLeft="415.486111111111,938.157406543462">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.4768509457555"
+              Start="0,0"
+              End="0,29.9768509457555">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.9768509457555" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Assignment 1\Join to User table">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Group_8].[User]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Assignment 1\Read Answers table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Assignment 1\Join Geography table">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Group_8].[Geography]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

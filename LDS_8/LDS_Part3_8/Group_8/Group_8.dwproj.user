@@ -1,0 +1,39 @@
+<AnalysisServicesUserConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Configurations>
+    <Configuration>
+      <Name>Development</Name>
+      <Options>
+        <UserIDs>
+          <ConfigurationSetting>
+            <Id>Group 8 DB</Id>
+            <Name>Group 8 DB</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3HpDCW+pcU+JcszlFeV7cAAAAAAWAAAARwByAG8AdQBwACAAOAAgAEQAQgAAABBmAAAAAQAAIAAAACzJRahWKWwHUUCxRW9m4fGjrUrdSQ846G36xsI8+O/oAAAAAA6AAAAAAgAAIAAAAMOOYUa6AgjUhCDDQdvAqHAsN625S4tlDAhHAQQwukhFEAAAAI98ea5FI5xwb4Jme5ObaK9AAAAAWhRaYrELeuMx9ZFM7G6ahdzwQ5pYnEM4lCFvDJEyAA4MAeHunHKn6ZgR3CJ7aWfdkMGSyRcvmLFX92dhy0d26g==</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>Group 8 DB 1</Id>
+            <Name>Group 8 DB 1</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3HpDCW+pcU+JcszlFeV7cAAAAAAaAAAARwByAG8AdQBwACAAOAAgAEQAQgAgADEAAAAQZgAAAAEAACAAAABXBTnE7em+t8ldg3Kxmzga7ZCBQw+33XTli/iaP2rxJQAAAAAOgAAAAAIAACAAAABEGZg75UBwvj+G3Maj3afnYQ8U3zO+CxyyR0exNGVtWhAAAAB2jiRg7gQrvDYV4SbtGviIQAAAANOJrEYUc/rUJRQrlOO4JbUvoVFmBwb7Mcj7NGl6vZBtupS1xNQfYP9LRL5bvCVwwxvLhWvrhD+p2zhkp9zCPFQ=</Value>
+          </ConfigurationSetting>
+        </UserIDs>
+        <UserPasswords>
+          <ConfigurationSetting>
+            <Id>Group 8 DB</Id>
+            <Name>Group 8 DB</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3HpDCW+pcU+JcszlFeV7cAAAAAAWAAAARwByAG8AdQBwACAAOAAgAEQAQgAAABBmAAAAAQAAIAAAAMvRiR7kqUWkN5fY+JjOs4rmwBH4sZAgrGi/hWD2qIBpAAAAAA6AAAAAAgAAIAAAAF8qrDYkUbEOyXW5VvJL4Z2tP7wSDTtryqqdCToPVdIPIAAAAE3jAKOmVyvYfh6lizS42yf7CAxuR9QldOGETigVHwc1QAAAAIEB2m99J3Ecy2KSuWnlq0Gtx4LjI0PDq/dEuVXocUM9y6s/EkFLGDhXAoQT5e9c3D5PF/J0slASlDj8MAx0muI=</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>Group 8 DB 1</Id>
+            <Name>Group 8 DB 1</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3HpDCW+pcU+JcszlFeV7cAAAAAAaAAAARwByAG8AdQBwACAAOAAgAEQAQgAgADEAAAAQZgAAAAEAACAAAADG+LK0qQZzIADyGXsj306AoJUXIs946cgDhpWTraRwIQAAAAAOgAAAAAIAACAAAAAWiy/hgSKwXzNaxVDhRkklkx5+EDlNKm4yRUdT/kjNvyAAAAAW0Yij5uupE2johT4kPC/wtmacKBlpEqJsI8U1M1Jl0EAAAADDLMQdclT7rxy6rH/teLUq+3zkTADtiBbU9E71QVNIscuU5FxBNFT2cu5fKDL4MGDwx36/6lg5boE/vwfRQSe+</Value>
+          </ConfigurationSetting>
+        </UserPasswords>
+        <TargetServer>http://lds.di.unipi.it/olap/msmdpump.dll</TargetServer>
+        <TargetDatabase>Group_8</TargetDatabase>
+        <StartObject>
+          <ObjectId></ObjectId>
+          <ObjectType>Current</ObjectType>
+        </StartObject>
+      </Options>
+    </Configuration>
+  </Configurations>
+</AnalysisServicesUserConfiguration>

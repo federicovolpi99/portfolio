@@ -1,0 +1,10 @@
+-- Assignment 3
+-- Show the ratio between the total correct answers of each year w.r.t the previous year.
+
+WITH MEMBER correct_ratio AS
+iif(([Date].[Time].currentmember.lag(1), [Measures].[Correct]) = 0, 1, (([Date].[Time].currentmember, [Measures].[Correct]) / ([Date].[Time].currentmember.lag(1), [Measures].[Correct]))),
+FORMAT_STRING = "Percent"
+
+SELECT correct_ratio on columns,
+nonempty([Date].[Time].[Year]) on rows
+FROM [Group 8 DB]

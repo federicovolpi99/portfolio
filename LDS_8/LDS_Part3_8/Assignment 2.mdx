@@ -1,0 +1,13 @@
+-- Assignment 2
+-- Show the total confidence for each year and the running yearly for European students.
+
+WITH MEMBER Running_Confidence AS
+sum(periodstodate([Date].[Time].[Year], [Date].[Time].currentmember), [Measures].[Total Confidence])
+
+MEMBER Annual_Confidence AS
+([Date].[Time].parent.parent, [Measures].[Total Confidence])
+
+SELECT {Running_Confidence, Annual_Confidence} on columns,
+nonempty(([Date].[Year].[Year], [Date].[Time].[Mesi])) on rows
+FROM [Group 8 DB]
+WHERE [User].[Geo].[Continent].&[Europe]

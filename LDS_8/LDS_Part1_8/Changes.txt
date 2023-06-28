@@ -1,0 +1,5 @@
+We made some small changes in the python code "Creazione csv.py"of the first assignment. 
+
+First we changed the values ​​of the quarter column of the Geography table from (1, 2, 3, 4) to (Q1, Q2, Q3, Q4) for better readability of the data.
+
+The most significant change was in the iscorrect column of the Answers table. We replaced "YES" and "NO" with 1 and 0, respectively 1 for "YES" and 0 for "NO". We chose to make this change to optimize the process for the second part's assignment 1.

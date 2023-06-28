@@ -1,0 +1,9 @@
+-- Assignment 1
+-- Show the total correct answers for each country and the grand total with respect to the continent.
+
+WITH MEMBER Continent_Grand_Total AS
+([User].[Geo].currentmember.parent, [Measures].[Correct])
+
+SELECT {[Measures].[Correct], Continent_Grand_Total}  on columns,
+nonempty(([User].[Continent].[Continent], [User].[Geo].[Country Name])) on rows
+FROM [Group 8 DB]
